@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Options from "../Options/Options";
-import Feedback from "../Feedback/Feedback";
-import Notification from "../Notification/Notification";
+import { useState, useEffect } from "react";
+import Options from "./components/Option/Options";
+import Feedback from "./components/Feedback/Feedback";
+import Notification from "./components/Notification/Notification";
+
+import "./App.css";
 
 const App = () => {
   const [feedback, setFeedback] = useState({
@@ -18,10 +20,18 @@ const App = () => {
   }, []);
 
   const updateFeedback = (feedbackType) => {
-    setFeedback((prevFeedback) => ({
-      ...prevFeedback,
-      [feedbackType]: prevFeedback[feedbackType] + 1,
-    }));
+    if (feedbackType === "reset") {
+      setFeedback({
+        good: 0,
+        neutral: 0,
+        bad: 0,
+      });
+    } else {
+      setFeedback((prevFeedback) => ({
+        ...prevFeedback,
+        [feedbackType]: prevFeedback[feedbackType] + 1,
+      }));
+    }
   };
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
