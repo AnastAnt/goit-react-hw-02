@@ -1,0 +1,14 @@
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.optionBtn {
+  background-color: aqua;
+  color: black;
+}
+.resetBtn {
+  background-color: aquamarine;
+  color: black;
+  opacity: 50%;
+}

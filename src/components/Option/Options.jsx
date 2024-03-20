@@ -1,19 +1,32 @@
 import PropTypes from "prop-types";
+import styles from "./Options.module.css";
 
 const Options = ({ updateFeedback, totalFeedback }) => {
   return (
-    <div className="options">
-      <button className="option-btn" onClick={() => updateFeedback("good")}>
+    <div className={styles.options}>
+      <button
+        className={styles.optionBtn}
+        onClick={() => updateFeedback("good")}
+      >
         Good
       </button>
-      <button className="option-btn" onClick={() => updateFeedback("neutral")}>
+      <button
+        className={styles.optionBtn}
+        onClick={() => updateFeedback("neutral")}
+      >
         Neutral
       </button>
-      <button className="option-btn" onClick={() => updateFeedback("bad")}>
+      <button
+        className={styles.optionBtn}
+        onClick={() => updateFeedback("bad")}
+      >
         Bad
       </button>
       {totalFeedback > 0 && (
-        <button className="reset-btn" onClick={() => updateFeedback("reset")}>
+        <button
+          className={styles.resetBtn}
+          onClick={() => updateFeedback("reset")}
+        >
           Reset
         </button>
       )}
