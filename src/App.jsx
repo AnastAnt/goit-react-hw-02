@@ -35,9 +35,8 @@ const App = () => {
   };
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positivePercentage = Math.round(
-    ((feedback.good + feedback.neutral) / totalFeedback) * 100
-  );
+  const positivePercentage =
+    totalFeedback > 0 ? Math.round((feedback.good / totalFeedback) * 100) : 0;
 
   useEffect(() => {
     localStorage.setItem("feedback", JSON.stringify(feedback));
@@ -47,14 +46,15 @@ const App = () => {
     <div>
       <h1>Sip Happens Café</h1>
       <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} />
-      {totalFeedback > 0 && (
+      {totalFeedback > 0 ? (
         <Feedback
           feedback={feedback}
           totalFeedback={totalFeedback}
           positivePercentage={positivePercentage}
         />
+      ) : (
+        <Notification />
       )}
-      {totalFeedback === 0 && <Notification />}
     </div>
   );
 };
