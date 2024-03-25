@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Options from "./components/Option/Options";
 import Feedback from "./components/Feedback/Feedback";
 import Notification from "./components/Notification/Notification";
-
+import cafeDescription from "./components/description/description";
 import "./App.css";
 
 const App = () => {
@@ -44,7 +44,8 @@ const App = () => {
 
   return (
     <div>
-      <h1>Sip Happens Café</h1>
+      <h1>{cafeDescription.name}</h1>
+      <p>{cafeDescription.descriptionText}</p>
       <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} />
       {totalFeedback > 0 ? (
         <Feedback
